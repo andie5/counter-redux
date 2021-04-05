@@ -4,12 +4,13 @@ import { increment, decrement } from "./index";
 
 class Counter extends React.Component {
   increment = () => {
-    this.props.dispatch(increment());
+    this.props.increment();
   };
 
   decrement = () => {
-    this.props.dispatch(decrement());
+    this.props.decrement();
   };
+
   render() {
     return (
       <div className='counter'>
@@ -30,9 +31,8 @@ function mapStateToProps(state) {
   };
 }
 
-// const mapDispatchToProps = {
-//   increment: increment,
-//   decrement: decrement,
-// };
-
-export default connect(mapStateToProps)(Counter);
+const mapDispatchToProps = {
+  increment,
+  decrement,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
